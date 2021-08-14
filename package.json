@@ -1,0 +1,27 @@
+{
+  "name": "the-game-of-kaist-back",
+  "version": "0.1.0",
+  "main": "index.js",
+  "dependencies": {
+    "firebase-admin": "^9.11.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.15.0",
+    "@babel/node": "^7.14.9",
+    "@babel/preset-env": "^7.15.0"
+  },
+  "scripts": {
+    "start": "npx babel-node --presets @babel/env index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/y305205/the-game-of-kaist-back.git"
+  },
+  "author": "Seunghwan Yoon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/y305205/the-game-of-kaist-back/issues"
+  },
+  "homepage": "https://github.com/y305205/the-game-of-kaist-back#readme",
+  "description": ""
+}
