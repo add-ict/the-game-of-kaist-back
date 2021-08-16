@@ -1,9 +1,10 @@
 {
   "name": "the-game-of-kaist-back",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "main": "index.js",
   "dependencies": {
-    "firebase-admin": "^9.11.0"
+    "firebase-admin": "^9.11.0",
+    "xlsx": "^0.17.0"
   },
   "devDependencies": {
     "@babel/core": "^7.15.0",
@@ -11,7 +12,8 @@
     "@babel/preset-env": "^7.15.0"
   },
   "scripts": {
-    "start": "npx babel-node --presets @babel/env index.js"
+    "start": "npx babel-node --presets @babel/env index.js",
+    "build": "python3 ./src/functions/assets/genR.py && npx babel-node --presets @babel/env ./src/functions/assets/genMapData.js"
   },
   "repository": {
     "type": "git",
