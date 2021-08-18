@@ -12,7 +12,7 @@ def getGraph():
 Graph=getGraph()
 def getReachable(G):
 	ret={i:{0:[i]} for i in range(40)}
-	for i in range(1,6):
+	for i in range(1,10):
 		for j in range(40):
 			ret[j][i]=[]	
 			for k in ret[j][i-1]:
@@ -22,11 +22,11 @@ def getReachable(G):
 	
 G=getGraph()
 R=getReachable(G)
-Rjs="const R = {"+\
+Rjs="const R = {\n"+\
 "\n".join([f"{i}:{R[i]}," for i in range(40)])+\
 """
 };
 export default R;"""
-with open("./R.js","w") as f:
+with open("./src/assets/R.js","w") as f:
     f.write(Rjs)
 

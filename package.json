@@ -13,7 +13,7 @@
   },
   "scripts": {
     "start": "npx babel-node --presets @babel/env index.js",
-    "build": "python3 ./src/functions/assets/genR.py && npx babel-node --presets @babel/env ./src/functions/assets/genMapData.js"
+    "build": "python3 src/assets/genR.py && npx babel-node --presets @babel/env ./src/assets/genMapData.js"
   },
   "repository": {
     "type": "git",
