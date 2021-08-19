@@ -1,10 +1,9 @@
-import {getDB} from "../Firebase";
 import timestone from "./assets/timestone";
 
 const timer = (rootRef,beforeState,afterStateState) => {
     const timerRef = rootRef.child("timer");
     const stateRef = rootRef.child("state");
-    const delay = timestone[beforeState.group];
+    const delay = timestone(beforeState);
     let until = Date.now()+delay*1000;
     let time = delay;
     timerRef.set({until,time});

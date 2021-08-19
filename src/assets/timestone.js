@@ -1,11 +1,8 @@
-const timestone = {
-    1: 120,
-    2: 120,
-    3: 60,
-    4: 60,
-    5: 60,
-    6: 60,
-    7: 60,
+const timestone = state => {
+    if (state.group === 4 && state.turn ===2) return 30;
+    if (state.group === 6) return 30;
+    return 120;
+
 };
 
 export default timestone;
