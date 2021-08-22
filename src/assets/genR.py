@@ -12,7 +12,7 @@ def getGraph():
 Graph=getGraph()
 def getReachable(G):
 	ret={i:{0:[i]} for i in range(40)}
-	for i in range(1,7):
+	for i in range(1,10):
 		for j in range(40):
 			ret[j][i]=[]	
 			for k in ret[j][i-1]:
@@ -22,6 +22,11 @@ def getReachable(G):
 	
 G=getGraph()
 R=getReachable(G)
-import pickle
-with open("../func1_R.pickle","wb") as f:
-	pickle.dump(R,f)
+Rjs="const R = {\n"+\
+"\n".join([f"{i}:{R[i]}," for i in range(40)])+\
+"""
+};
+export default R;"""
+with open("./src/assets/R.js","w") as f:
+    f.write(Rjs)
+

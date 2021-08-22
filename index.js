@@ -1,8 +1,7 @@
-import {watch} from "./src/JSsrc/watchdog";
-import {genesisN} from "./src/JSsrc/genesis";
+import watch from "./src/watch";
+import {getDB} from "./Firebase";
 
-const gamesN=3;
-const roots=Array(gamesN).fill(0).map((x,i)=>`/games/game${i}`);
-//genesisN(gamesN);
-for (let i=0;i<gamesN;i++)
-    watch(roots[i]);
+//const roots=Array(3).fill(0).map((x,i)=>`/games/game${i}`);
+const roots=["/"]
+for (let i=0;i<roots.length;i++)
+    watch(getDB(roots[i]));
