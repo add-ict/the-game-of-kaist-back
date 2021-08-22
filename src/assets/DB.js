@@ -11,7 +11,7 @@ $x
  */
 
 import mapData from "./mapData";
-export const VERSION = "0.2.0"
+export const VERSION = "0.2.1"
 const INT = "int";
 const BOOL = "bool";
 const STR = "str";
@@ -97,7 +97,7 @@ const DB = {
                     },
                     map: {
                         location: INT,
-                        canGO: LIST(BOOL,LEN_LOCATION)
+                        canGo: LIST(BOOL,LEN_LOCATION)
                     },
                     upstream: ANY,
                     downstream: ANY
@@ -109,20 +109,21 @@ const DB = {
 const initClass = classID => {
     return {
         classID: classID,
+        name: "Class "+classID,
         score: {
-            R: {max: 1,min: 0, value:0},
-            G: {max: 1,min: 0, value:0},
-            H: {max: 1,min: 0, value:0},
-            B: {max: 1,min: 0, value:0},
+            R: {max: 400,min: -100, value:0},
+            G: {max: 400,min: -100, value:0},
+            H: {max: 400,min: -100, value:0},
+            B: {max: 400,min: -100, value:0},
         },
-        character: INT,
+        character: 0,
         deck: {
             cards: [1,2,3,4,5],
             used: Array(LEN_CARDS).fill(false)
         },
         map: {
             location: 24,
-            canGO: Array(LEN_CARDS).fill(false)
+            canGo: Array(LEN_LOCATION).fill(false)
         },
         upstream: {},
         downstream: {}

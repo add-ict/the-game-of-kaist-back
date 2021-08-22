@@ -5,8 +5,10 @@ const descs = [
 ]
 async function before_6 (classRef,upstream) {
     const stream = {};
+    let result = upstream?.LAST_SELECT?.result;
+    if (!result) result=0;
     stream.title = ["학과 선택",""];
-    stream.desc = descs[upstream.LAST_SELECT.result];
+    stream.desc = descs[result];
     return classRef.update({'downstream/LAST_USE':stream});
 };
 

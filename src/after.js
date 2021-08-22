@@ -1,6 +1,9 @@
 import after_2 from "./afters/after_2";
 import after_4 from "./afters/after_4";
 import {updateRanking} from "./ranking";
+import after_1 from "./afters/after_1";
+import after_6 from "./afters/after_6";
+import after_7 from "./afters/after_7";
 
 async function get(ref) {
     const retG = await ref.get();
@@ -19,7 +22,7 @@ async function after(rootRef){
         const classRef = dataRef.child("class").child(classID);
         switch (state.group) {
             case 1:
-                Promises.push(classRef.update({"map/location":data["class"][classID].upstream.MOVEMENT.position}));
+                Promises.push(after_1(classRef,data["class"][classID]));
                 break;
             case 2:
                 Promises.push(after_2(classRef,data["class"][classID]));

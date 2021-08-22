@@ -50,8 +50,10 @@ const descs = [
 ]
 async function before_4 (classRef,state,upstream) {
     const stream = {};
+    let result=upstream?.SEASON_SELECT;
+    if (!result) result={result:0};
     stream.title = titles[Math.floor(state.turn/3)]
-    stream.desc = descs[Math.floor(state.turn/3)][upstream.SEASON_SELECT.result]
+    stream.desc = descs[Math.floor(state.turn/3)][result.result]
     return classRef.update({'downstream/SEASON_USE':stream});
 };
 

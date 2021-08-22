@@ -5,6 +5,7 @@ import before_4 from "./befores/before_4";
 import before_5 from "./befores/before_5";
 import before_6 from "./befores/before_6";
 import before_7 from "./befores/before_7";
+import before_8 from "./befores/before_8";
 
 async function get(ref) {
     const retG = await ref.get();
@@ -24,14 +25,20 @@ async function before (rootRef) {
             case 1:
                 const location = data["class"][classID].map.location;
                 const deck = data["class"][classID].deck;
+                const cards = deck.cards;
+                let used = deck.used;
+                if (state.turn%4===0&&state.turn<12) used=Array(cards.length).fill(false)
                 let candi = [];
                 for (let i = 0; i < deck.cards.length; i++)
-                    if (!deck.used[i])
+                    if (!used[i])
                         candi = candi.concat(R[location][cards[i]]);
                 const canGo = {};
                 for (let i = 0; i < 40; i++)
-                    canGo[i] = candi.contains(i);
-                Promises.push(classRef.update({upstream: null, downstream: null, "map/canGo": canGo}));
+                    canGo[i] = candi.includes(i);
+                if(state.turn!==12)
+                    Promises.push(classRef.update({upstream: null, downstream: null, "map/canGo": canGo,"deck/used":used}));
+                else
+                    Promises.push(classRef.update({"map/canGo": canGo,"deck/used":used}));
                 break;
             case 3:
                 Promises.push(before_3(classRef,state));
