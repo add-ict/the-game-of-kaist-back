@@ -10,7 +10,7 @@ async function before_6 (classRef,upstream) {
     const stream = {};
     let result = upstream?.LAST_SELECT?.result;
     if (!result) result=0;
-    stream.title = ["학과 진입","학과 진입(번역X)"];
+    stream.title = ["학과 진입","Joining the Department"];
     stream.desc = descs[result];
     return classRef.update({'downstream/LAST_USE':stream});
 };
