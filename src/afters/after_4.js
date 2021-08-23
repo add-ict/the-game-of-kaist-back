@@ -1,3 +1,5 @@
+import {getEffect} from "./charEffect";
+
 async function get(ref) {
     const retG = await ref.get();
     return retG.val();
@@ -27,6 +29,7 @@ async function after_4 (dataRef,state) {
     else for (let i=0;i<5;i++) {
         let result = data["class"][i]?.upstream?.SEASON_SELECT?.result;
         let useData = data["class"][i]?.upstream?.SEASON_USE;
+        const character = data["class"][i]?.character;
         if (!result) result=0;
         if (!useData) useData = {classID:(i+1)%5,x:0}
         let select=-1;
@@ -44,33 +47,33 @@ async function after_4 (dataRef,state) {
         switch (select) {
             case 0:
                 Promises.push(dataRef.child("class").child(useData.classID).child("score").child('G')
-                    .update({value:data["class"][useData.classID].score['G'].value-40}));
+                    .update({value:data["class"][useData.classID].score['G'].value+getEffect(-40,"G",character)}));
                 break;
             case 1:
                 Promises.push(dataRef.child("class").child(useData.classID).child("score").child('R')
-                    .update({value:data["class"][useData.classID].score['R'].value-40}));
+                    .update({value:data["class"][useData.classID].score['R'].value+getEffect(-40,"R",character)}));
                 break;
             case 2:
                 Promises.push(dataRef.child("class").child(useData.classID).child("score").child('H')
-                    .update({value:data["class"][useData.classID].score['H'].value-40}));
+                    .update({value:data["class"][useData.classID].score['H'].value+getEffect(-40,"H",character)}));
                 break;
             case 3:
                 Promises.push(dataRef.child("class").child(i).child("score").child('G')
-                    .update({value:data["class"][i].score['G'].value+40}));
+                    .update({value:data["class"][i].score['G'].value+getEffect(40,"G",character)}));
                 Promises.push(dataRef.child("class").child(useData.classID).child("score").child('G')
-                    .update({value:data["class"][useData.classID].score['G'].value-40}));
+                    .update({value:data["class"][useData.classID].score['G'].value+getEffect(-40,"G",character)}));
                 break;
             case 4:
                 Promises.push(dataRef.child("class").child(i).child("score").child('R')
-                    .update({value:data["class"][i].score['R'].value+40}));
+                    .update({value:data["class"][i].score['R'].value+getEffect(40,"R",character)}));
                 Promises.push(dataRef.child("class").child(useData.classID).child("score").child('R')
-                    .update({value:data["class"][useData.classID].score['R'].value-40}));
+                    .update({value:data["class"][useData.classID].score['R'].value+getEffect(-40,"R",character)}));
                 break;
             case 5:
                 Promises.push(dataRef.child("class").child(i).child("score").child('H')
-                    .update({value:data["class"][i].score['H'].value+40}));
+                    .update({value:data["class"][i].score['H'].value+getEffect(40,"H",character)}));
                 Promises.push(dataRef.child("class").child(useData.classID).child("score").child('H')
-                    .update({value:data["class"][useData.classID].score['H'].value-40}));
+                    .update({value:data["class"][useData.classID].score['H'].value+getEffect(-40,"H",character)}));
                 break;
             default:
         }
