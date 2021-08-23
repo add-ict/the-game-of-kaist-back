@@ -25,7 +25,6 @@ const watch = rootRef=>{
             case 1:
                 if (state.turn===11&&state.group===8) {
                     stateRef.update({turn:12}).then(()=>{
-                        newTurnGroup(rootRef);
                     })
                 }
                 else before(rootRef);
@@ -35,8 +34,8 @@ const watch = rootRef=>{
                 //stateRef.update({state:3});
                 break;
             case 3:
-                ckpt(rootRef);
-                //stateRef.update({state:7});
+                //ckpt(rootRef);
+                stateRef.update({state:7});
                 break;
             case 7:
                 after(rootRef);

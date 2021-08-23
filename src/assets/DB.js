@@ -11,7 +11,7 @@ $x
  */
 
 import mapData from "./mapData";
-export const VERSION = "0.2.1"
+export const VERSION = "0.2.2"
 const INT = "int";
 const BOOL = "bool";
 const STR = "str";
