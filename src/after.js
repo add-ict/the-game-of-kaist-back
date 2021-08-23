@@ -29,21 +29,20 @@ async function after(rootRef){
                 break;
             case 3:
                 if (state.turn===2) {
-                    const flag = {G:0,R:0,H:0}
+                    const flag = [0,0,0];
                     for (let i=0;i<5;i++) {
                         let result = data["class"][i]?.upstream?.SEASON_SELECT?.result;
                         if (!result) result=0;
-                        if (result === 0)
-                            flag.G++;
-                        else if (result === 1)
-                            flag.R++;
-                        else if (result === 2)
-                            flag.H++;
+                        flag[result]++;
                     }
-                    for (let i=0;i<5;i++)
-                        Promises.push(dataRef.child("class").child(i).child("downstream/SEASON_SELECT/count")
-                                    .update(flag));
+                    for (let i=0;i<5;i++) {
+                        let result = data["class"][i]?.upstream?.SEASON_SELECT?.result;
+                        if (!result) result=0;
+                        Promises.push(dataRef.child("class").child(i).child("downstream/SEASON_USE/count")
+                            .update(flag[result]));
+                    }
                 }
+                break;
             case 6:
                 Promises.push(after_6(classRef,data["class"][classID]));
                 break;

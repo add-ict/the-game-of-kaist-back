@@ -34,8 +34,8 @@ const watch = rootRef=>{
                 //stateRef.update({state:3});
                 break;
             case 3:
-                //ckpt(rootRef);
-                stateRef.update({state:7});
+                ckpt(rootRef);
+                //stateRef.update({state:7});
                 break;
             case 7:
                 after(rootRef);

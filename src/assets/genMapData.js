@@ -1,14 +1,15 @@
 const XLSX = require('xlsx');
-const workbook = XLSX.readFile('./src/assets/0818.xlsx')
+const workbook = XLSX.readFile('./src/assets/0823.xlsx')
 //const workbook = XLSX.readFile('./0818.xlsx')
-const ws1 = workbook.Sheets[workbook.SheetNames[0]];
+const ws2 = workbook.Sheets[workbook.SheetNames[0]]; //eng
+const ws1 = workbook.Sheets[workbook.SheetNames[1]]; //kor
 const mapData={};
 for (let i=3;i<=42;i++) {
     const data = {};
     data.position = ws1['A' + i].v;
-    data.name = [ws1['B' + i]?.v];
-    data.cause = [ws1['C' + i]?.v];
-    data.desc = [ws1['D' + i]?.v];
+    data.name = [ws1['B' + i]?.v,ws2['B' + i]?.v];
+    data.cause = [ws1['C' + i]?.v,ws2['C' + i]?.v,];
+    data.desc = [ws1['D' + i]?.v,ws2['D' + i]?.v,];
     data.value = [
         {
             G: ws1['E' + i] ? ws1['E' + i].v : 0,

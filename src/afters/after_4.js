@@ -35,10 +35,12 @@ async function after_4 (dataRef,state) {
                 Promises.push(dataRef.child("class").child(i).child("score").child('B')
                 .update({value:data["class"][i].score['B'].value*2}));
             if (result===2)
-                select = useData.x;
+                if (useData.x==0) select=3;
+                if (useData.x==1) select=4;
+                if (useData.x==2) select=2;
         }
-        if (state.turn===5) select = result;
-        if (state.turn===8) select = 3+result;
+        if (state.turn===5) select = 3+result;
+        if (state.turn===8) select = result;
         switch (select) {
             case 0:
                 Promises.push(dataRef.child("class").child(useData.classID).child("score").child('G')
