@@ -1,4 +1,5 @@
 import mapData from "../assets/mapData";
+import charEffect from "./charEffect";
 const cData = {
     0: {R:0,G:0,H:0},
     1: {R:-1,G:0,H:1},
@@ -21,6 +22,7 @@ async function after_2 (classRef,classData) {
     }
     else dv = {...ret};
     console.log(location,dv)
+    charEffect(dv.R,"R",character)
     dv.R = classData.score.R.value + dv.R + Math.abs(Math.floor(dv.R * cData[character].R/10));
     dv.G = classData.score.G.value + dv.G + Math.abs(Math.floor(dv.G * cData[character].G/10));
     dv.H = classData.score.H.value + dv.H + Math.abs(Math.floor(dv.H * cData[character].H/10));
