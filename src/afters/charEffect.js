@@ -28,6 +28,6 @@ const charEffect =  (dv,score,character) => {
     const RGH="RGH"
     for (let i=0;i<3;i++)
         ret[RGH[i]] += getEffect(dv[RGH[i]],RGH[i],character)
-    return dv
+    return ret
 }
 export default charEffect;

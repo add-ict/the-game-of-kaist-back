@@ -1,28 +1,30 @@
 import mapData from "../assets/mapData";
-import charEffect from "./charEffect";
-const cData = {
-    0: {R:0,G:0,H:0},
-    1: {R:-1,G:0,H:1},
-    2: {R:2,G:-1,H:-1},
-    3: {R:-2,G:2,H:0},
-    4: {R:1,G:-2,H:1},
-    5: {R:0,G:1,H:-1},
-}
-async function after_2 (classRef,classData) {
-    let result = classData?.upstream?.MINIGAME?.result;
-    if(!result) result=0
+import R from "../assets/R";
+
+async function after_1 (classRef,classData) {
     const location = classData.map.location;
-    const character = classData.character;
-    const ret = mapData[location].value[result];
-    let dv = {"G":0,"R":0,"H":0,"B":0};
-    console.log(classData.score,ret)
-    if (location === 20) {
-        const x = "RGHB".charAt(Math.floor(Math.random()*4));
-        dv[x]=[30,40,50][result];
+    const deck = classData.deck;
+    const cards = deck.cards;
+    const used = deck.used;
+    let nextLocation=classData?.upstream?.MOVEMENT;
+    if (!nextLocation) {
+        let candi = [];
+        for (let i = 0; i < cards.length; i++)
+            if (!used[i]){
+                candi = candi.concat(R[location][cards[i]]);
+                console.log(location)}
+        nextLocation = {position:candi[Math.floor(Math.random()*candi.length)]}
     }
-    else dv = {...ret};
-    dv=charEffect(dv,classData.score,character)
-    return classRef.update({"score/R/value":dv.R,"score/G/value":dv.G,"score/H/value":dv.H,"score/B/value":dv.B});
+
+    for (let i = 0; i < deck.cards.length; i++)
+        if (!used[i])
+            if (R[location][cards[i]].includes(parseInt(nextLocation.position))) {
+                used[i] = true
+                break
+            }
+
+    console.log(nextLocation)
+    return classRef.update({"map/location":nextLocation.position,"deck/used":used,"map/canGo":Array(40).fill(false)});
 };
 
-export default after_2;
+export default after_1;

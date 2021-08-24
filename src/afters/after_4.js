@@ -1,4 +1,5 @@
 import {getEffect} from "./charEffect";
+import broadcast from "../broadcast";
 
 async function get(ref) {
     const retG = await ref.get();
@@ -48,32 +49,38 @@ async function after_4 (dataRef,state) {
             case 0:
                 Promises.push(dataRef.child("class").child(useData.classID).child("score").child('G')
                     .update({value:data["class"][useData.classID].score['G'].value+getEffect(-40,"G",character)}));
+                Promises.push(broadcast(dataRef.child("class").child(useData.classID),"Air-raid!",`${data["class"][i]?.name} attacked your G`));
                 break;
             case 1:
                 Promises.push(dataRef.child("class").child(useData.classID).child("score").child('R')
                     .update({value:data["class"][useData.classID].score['R'].value+getEffect(-40,"R",character)}));
+                Promises.push(broadcast(dataRef.child("class").child(useData.classID),"Air-raid!",`${data["class"][i]?.name} attacked your R`));
                 break;
             case 2:
                 Promises.push(dataRef.child("class").child(useData.classID).child("score").child('H')
                     .update({value:data["class"][useData.classID].score['H'].value+getEffect(-40,"H",character)}));
+                Promises.push(broadcast(dataRef.child("class").child(useData.classID),"Air-raid!",`${data["class"][i]?.name} attacked your H`));
                 break;
             case 3:
                 Promises.push(dataRef.child("class").child(i).child("score").child('G')
                     .update({value:data["class"][i].score['G'].value+getEffect(40,"G",character)}));
                 Promises.push(dataRef.child("class").child(useData.classID).child("score").child('G')
                     .update({value:data["class"][useData.classID].score['G'].value+getEffect(-40,"G",character)}));
+                Promises.push(broadcast(dataRef.child("class").child(useData.classID),"Air-raid!",`${data["class"][i]?.name} attacked your G`));
                 break;
             case 4:
                 Promises.push(dataRef.child("class").child(i).child("score").child('R')
                     .update({value:data["class"][i].score['R'].value+getEffect(40,"R",character)}));
                 Promises.push(dataRef.child("class").child(useData.classID).child("score").child('R')
                     .update({value:data["class"][useData.classID].score['R'].value+getEffect(-40,"R",character)}));
+                Promises.push(broadcast(dataRef.child("class").child(useData.classID),"Air-raid!",`${data["class"][i]?.name} attacked your R`));
                 break;
             case 5:
                 Promises.push(dataRef.child("class").child(i).child("score").child('H')
                     .update({value:data["class"][i].score['H'].value+getEffect(40,"H",character)}));
                 Promises.push(dataRef.child("class").child(useData.classID).child("score").child('H')
                     .update({value:data["class"][useData.classID].score['H'].value+getEffect(-40,"H",character)}));
+                Promises.push(broadcast(dataRef.child("class").child(useData.classID),"Air-raid!",`${data["class"][i]?.name} attacked your H`));
                 break;
             default:
         }

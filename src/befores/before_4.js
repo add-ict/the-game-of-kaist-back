@@ -111,7 +111,7 @@ async function before_4 (classRef,state,upstream) {
     if (!result) result={result:0};
     stream.title = titles[Math.floor(state.turn/3)]
     stream.desc = descs[Math.floor(state.turn/3)][result.result]
-    return classRef.update({'downstream/SEASON_USE':stream});
+    return classRef.update({'downstream/SEASON_USE/title':stream.title,'downstream/SEASON_USE/desc':stream.desc});
 };
 
 export default before_4;
