@@ -12,7 +12,7 @@ async function after_1 (classRef,classData) {
         for (let i = 0; i < cards.length; i++)
             if (!used[i]){
                 candi = candi.concat(R[location][cards[i]]);
-            console.log(location)}
+                console.log(location)}
         nextLocation = {position:candi[Math.floor(Math.random()*candi.length)]}
     }
 

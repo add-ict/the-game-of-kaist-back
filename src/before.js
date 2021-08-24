@@ -17,7 +17,7 @@ async function before (rootRef) {
     const turnGroup = await get(rootRef.child("turnGroup"));
     const dataRef = rootRef.child("turnGroups").child(turnGroup);
     const data = await get(dataRef);
-    if (state.group === 8) return before_8(dataRef,data);
+    if (state.group === 8) return before_8(dataRef,rootRef.child("turnGroups"),data);
     const Promises = [];
     for (let classID=0;classID<5;classID++) {
         const classRef = dataRef.child("class").child(classID);

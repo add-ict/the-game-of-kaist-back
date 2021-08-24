@@ -11,7 +11,7 @@ $x
  */
 
 import mapData from "./mapData";
-export const VERSION = "0.2.1"
+export const VERSION = "1.0.0"
 const INT = "int";
 const BOOL = "bool";
 const STR = "str";
@@ -24,6 +24,7 @@ const LIST = (type, len=-1) => {
 const LEN_CARDS = 5;
 const LEN_LOCATION = 40;
 
+//outdated
 const DB = {
     VERSION: STR,
     state:{
@@ -126,7 +127,8 @@ const initClass = classID => {
             canGo: Array(LEN_LOCATION).fill(false)
         },
         upstream: {},
-        downstream: {}
+        downstream: {},
+        MESSAGE: {}
     }
 }
 //update database.rules.json
@@ -143,6 +145,7 @@ const initState = {
         time: 0
     },
     CKPT: false,
+    RELOAD: 0,
     turnGroup: "init",
     turnGroups: {
         init: {

@@ -5,7 +5,7 @@ const descs = [
 ]
 async function before_5 (classRef) {
     const stream = {};
-    stream.title = ["학과 선택",""];
+    stream.title = ["학과 진입","Joining the Department"];
     stream.desc = descs;
     return classRef.update({'downstream/LAST_SELECT':stream});
 };

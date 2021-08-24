@@ -1,6 +1,6 @@
 {
   "name": "the-game-of-kaist-back",
-  "version": "0.2.1",
+  "version": "1.0.0",
   "main": "index.js",
   "dependencies": {
     "firebase-admin": "^9.11.0",

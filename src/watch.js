@@ -25,7 +25,6 @@ const watch = rootRef=>{
             case 1:
                 if (state.turn===11&&state.group===8) {
                     stateRef.update({turn:12}).then(()=>{
-                        newTurnGroup(rootRef);
                     })
                 }
                 else before(rootRef);
