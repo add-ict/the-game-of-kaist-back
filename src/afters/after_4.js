@@ -25,7 +25,7 @@ async function after_4 (dataRef,state) {
             for (let j = 0; j < 3; j++)
                 if(flag[RGH[j]].includes(i))
                     Promises.push(dataRef.child("class").child(i).child("score").child(RGH[j])
-                        .update({value:data["class"][i].score[RGH[j]].value+getEffect(Math.floor(100/flag[RGH[j]].length),"H",data["class"][i]?.character)}));
+                        .update({value:data["class"][i].score[RGH[j]].value+getEffect(Math.floor(100/flag[RGH[j]].length),RGH[j],data["class"][i]?.character)}));
     }
     else for (let i=0;i<5;i++) {
         let result = data["class"][i]?.upstream?.SEASON_SELECT?.result;
