@@ -1,5 +1,5 @@
 const descs = [
-    ["Department of Status Trade",""],
+    ["Department of Stat Trade",""],
     ["Department of Mathe-Magics",""],
     ["Department of Department",""],
 ]

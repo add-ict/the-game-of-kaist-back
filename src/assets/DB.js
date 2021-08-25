@@ -11,7 +11,7 @@ $x
  */
 
 import mapData from "./mapData";
-export const VERSION = "1.0.0"
+export const VERSION = "1.1.1"
 const INT = "int";
 const BOOL = "bool";
 const STR = "str";
@@ -110,7 +110,7 @@ const DB = {
 const initClass = classID => {
     return {
         classID: classID,
-        name: "Class "+classID,
+        name: 27+classID,
         score: {
             R: {max: 400,min: -100, value:0},
             G: {max: 400,min: -100, value:0},

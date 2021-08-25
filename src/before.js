@@ -23,22 +23,23 @@ async function before (rootRef) {
         const classRef = dataRef.child("class").child(classID);
         switch (state.group) {
             case 1:
+            case 2:
                 const location = data["class"][classID].map.location;
                 const deck = data["class"][classID].deck;
                 const cards = deck.cards;
                 let used = deck.used;
-                if (state.turn%4===0&&state.turn<12) used=Array(cards.length).fill(false)
+                if(state.group===1) {
+                    if (state.turn % 4 === 0 && state.turn < 12) used = Array(cards.length).fill(false)
+                    Promises.push(classRef.update({"deck/used": used}));
+                }
                 let candi = [];
-                for (let i = 0; i < deck.cards.length; i++)
+                for (let i = 0; i < cards.length; i++)
                     if (!used[i])
                         candi = candi.concat(R[location][cards[i]]);
                 const canGo = {};
                 for (let i = 0; i < 40; i++)
                     canGo[i] = candi.includes(i);
-                if(state.turn!==12)
-                    Promises.push(classRef.update({upstream: null, downstream: null, "map/canGo": canGo,"deck/used":used}));
-                else
-                    Promises.push(classRef.update({"map/canGo": canGo,"deck/used":used}));
+                Promises.push(classRef.update({upstream: null, downstream: null, "map/canGo": canGo}));
                 break;
             case 3:
                 Promises.push(before_3(classRef,state));
