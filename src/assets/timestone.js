@@ -10,10 +10,10 @@ const RESULT = 8;
 const timestone = state => {
     if (state.group === MOVEMENT) return 90;
     if (state.group === MINIGAME) return 140;
-    if (state.group === SEASON_SELECT) return 90;
+    if (state.group === SEASON_SELECT) return 120;
 
     if (state.group === SEASON_USE && state.turn ===2) return 20;
-    if (state.group === SEASON_USE) return 90;
+    if (state.group === SEASON_USE) return 60;
 
     if (state.group === LAST_USE) return 60;
 
