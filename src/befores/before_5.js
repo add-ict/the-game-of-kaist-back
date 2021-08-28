@@ -1,7 +1,7 @@
 const descs = [
-    ["Department of Status Trade",""],
-    ["Department of Mathe-Magics",""],
-    ["Department of Department",""],
+    ["<Department of Stat Trade>","<Department of Stat Trade>"],
+    ["<Department of Mathe-Magics>","<Department of Mathe-Magics>"],
+    ["<Department of Department>","<Department of Department>"],
 ]
 async function before_5 (classRef) {
     const stream = {};

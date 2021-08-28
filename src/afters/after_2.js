@@ -16,7 +16,7 @@ async function after_2 (classRef,classData) {
     const ret = mapData[location].value[result];
     let dv = {"G":0,"R":0,"H":0,"B":0};
     console.log(classData.score,ret)
-    if (location === 20) {
+    if (location == 20) {
         const x = "RGHB".charAt(Math.floor(Math.random()*4));
         dv[x]=[30,40,50][result];
     }
